@@ -1,4 +1,4 @@
-import setup as robot
+import setup
 
 # ===============================
 # STUDENT CONTROLS

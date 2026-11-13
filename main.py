@@ -1,13 +1,23 @@
-# Welcome to Python Compiler! Press Ctrl+Enter to run
-print("Hello, World!")
+import setup as robot
 
-# Pandas example
-import pandas as pd
-df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
-print("\nDataFrame:\n", df)
+# ===============================
+# STUDENT CONTROLS
+# ===============================
+BATTERY_DRAIN = 0.2                 # Battery lost each step
 
-# Matplotlib example (uncomment to run)
-# import matplotlib.pyplot as plt
-# plt.plot([1, 2, 3], [1, 4, 9])
-# plt.title('Simple Plot')
-# plt.show()
+# ===============================
+# MAIN LOOP — UNSAFE BEHAVIOR
+# ===============================
+robot.set_status("Robot working near people (unsafe).")
+
+while robot.battery > 0:
+    robot.prepare_frame()                   # clear + redraw environment
+
+    robot.move_back_and_forth()             # robot walks left/right
+    robot.use_battery(BATTERY_DRAIN)        # drain battery each step
+
+    robot.draw_robot()                            # draw the robot each frame
+    robot.finish_frame()                    # update screen + wait
+
+robot.prepare_frame()                   # clear + redraw environment
+robot.collapse()
